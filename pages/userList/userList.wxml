@@ -1,0 +1,23 @@
+<!--pages/userList/userList.wxml-->
+
+<view class="content">
+  <view wx:for="{{userList}}" wx:key="{{item._id}}" class="list-item-user" data-index="{{item.userName}}" data-cid="{{item._id}}" bindtap="deleteUser">
+    <view class="item-desc">
+      <image class='com-logo' src='{{item.logo}}'></image>
+      <view class="info">
+        <view class="item-head">
+          <text class='item-title text-ellipsis'>{{item.userName}}</text>
+        </view>
+        <view class="item-address">
+          <text class="item-pos text-ellipsis">{{item.userTypeDetail.name}}</text>
+        </view>
+        <view class="item-address">
+           <text class="item-pos text-ellipsis" wx-if="{{item.userType == 'interviewer'}}">{{item.companyDetail.name}}</text> 
+        </view>
+      </view>
+      <view class="handle">
+        <button  type="default"  size="mini">管理</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -4,43 +4,59 @@
   <template is='header' data='{{header}}'></template>
   <!-- 公司简介-start -->
   <view class="company">
-    <image wx:if='{{!!companyLogo}}' class="com-logo" src="{{companyLogo}}" />
     <view class="item-desc">
       <view class="desc-l">
-        <view class="title text-ellipsis">{{companyShortName}}</view>
+        <view class="title text-ellipsis">{{companyFullName}}</view>
         <view class="location">
           <view class="icon location-icon"></view>
-          <text class="text">{{companyAddress}}</text>
+          <text class="text">{{city}}/{{jobNature}}/{{companyLevel}}/{{stuffNumber}}</text>
         </view>
-        <view class="info text-ellipsis">{{companyInfo}}</view>
+        <!-- <view class="info text-ellipsis">{{companyInfo}}</view> -->
       </view>
       <view class="desc-r">
-        <view class="icon authentication"></view>
+        <!-- <view class="icon authentication"></view> -->
       </view>
     </view>
+    <image wx:if='{{!!companyLogo}}' class="com-logo" src="{{companyLogo}}" />
+  </view>
+  <view class="company-tab">
+  
+    <view class="swiper-tab">  
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">公司简介</view>  
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">在招职位</view>
+    </view>  
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">  
+      <!-- 公司简介 -->  
+      <swiper-item>  
+        <view class="company-short-info">
+          <view class="part-header">
+            <text>——————</text>
+            <text>公司介绍</text>
+            <text>——————</text>
+          </view>
+          <view class="part-introduce">
+            <text>{{companyInfo}}</text>
+          </view>
+          <view class="part-header">
+            <text>——————</text>
+            <text>公司地址</text>
+            <text>——————</text>
+          </view>
+          <view class="part-address">
+            <view class="location">
+              <view class="icon location-icon"></view>
+              <text class="text" wx:for="{{cities}}">{{item.nameStr}}</text>
+            </view>
+          </view>
+        </view>  
+      </swiper-item>  
+      <!-- 在招职位 -->  
+      <swiper-item>  
+        <view class="position-list">
+           <template is='position_link' data='{{positionList}}' />
+        </view>  
+      </swiper-item>  
+    </swiper>  
   </view>
   <!-- 公司简介-end -->
-  <!-- 职位分类-start -->
-  <view wx:if='{{dataList.length > 0}}' class="position-type">
-    <view class="header">职位分类</view>
-    <view class="content">
-      <view class="h-item">
-        <view wx:for='{{dataList}}' class="v-item {{index == selectedIndex ? 'selected': ''}} {{item.value.totalCount == 0 ? 'disabled': ''}}"
-          data-index='{{index}}' bindtap='changeType'>{{item.key}}</view>
-      </view>
-    </view>
-  </view>
-  <!-- 职位分类-end -->
-  <!-- 职位列表-start -->
-  <view wx:if='currentData.key' class="position-list">
-    <view wx:for='{{currentData.value.result}}' data-pid='{{item.positionId}}' class="position-item" bindtap='viewPositionDetail'>
-      <view class="item-l">
-        <view class="name text-ellipsis">{{item.positionName}}</view>
-        <view class="time">{{item.createTime}}</view>
-      </view>
-      <view class="item-r">{{item.salary}}</view>
-    </view>
-    <view wx:if='{{currentData.hasMore}}' class="list-more" bindtap='loadMore'>{{ isLoading ? '正在加载...': '加载更多' }}</view>
-  </view>
-  <!-- 职位列表-end -->
 </view>

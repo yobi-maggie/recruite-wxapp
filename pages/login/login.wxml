@@ -1,10 +1,14 @@
 <view class="login">
   <form bindsubmit="formSubmit">
-    <view class="section">
-      <input class="r-email top" type="text" placeholder="已验证手机/邮箱" auto-focus/>
+    <view class="title">登录</view>
+    <view class="title reg" bindtap='goToRegister'>
+      <text>注册</text>
     </view>
     <view class="section">
-      <input class="r-psw btm" password="true" placeholder="密码" />
+      <input class="r-email top" name="userName" type="text" placeholder="帐号" auto-focus/>
+    </view>
+    <view class="section">
+      <input class="r-psw btm" name="password"  password="true" placeholder="密码" />
     </view>
     <view class="btn-area">
       <button class="btn-login" formType="submit">登录</button>

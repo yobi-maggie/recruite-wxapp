@@ -1,0 +1,17 @@
+/* pages/usertype/index.wxss */
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1000rpx;
+}
+.btn {
+  width: 300rpx;
+  height: 300rpx;
+  border: 2rpx solid #eee;
+  text-align: center;
+  line-height: 300rpx;
+  margin-bottom: 20rpx;
+  background-color: 
+}

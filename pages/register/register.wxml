@@ -1,0 +1,30 @@
+<view class="login">
+  <form bindsubmit="formSubmit">
+    <view class="title">注册</view>
+    <view class="title reg" bindtap='goToLogin'>
+      <text>去登录</text>
+    </view>
+    <view class="section">
+      <input class="r-email top" type="text" name="userName" placeholder="用户名" auto-focus value="{{userName}}"/>
+    </view>
+    <view class="section">
+    <radio-group name="userType" value="{{userType}}" class="r-email radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{userTypes}}" wx:key="{{index}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+    </radio-group>
+    </view>
+    <view class="section">
+      <input class="r-email" type="text" name="contact" placeholder="联系方式" auto-focus value="{{contact}}"/>
+    </view>
+    <view class="section">
+      <input class="r-psw r-email" name="password" password="true" placeholder="密码" value="{{password}}"/>
+    </view>
+    <view class="section">
+      <input class="r-psw btm" name="repassword" password="true" placeholder="确认密码" value="{{repassword}}" />
+    </view>
+    <view class="btn-area">
+      <button class="btn-login" formType="submit">注册</button>
+    </view>
+  </form>
+</view>

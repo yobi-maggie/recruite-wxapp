@@ -23,7 +23,8 @@
 
 .item-desc-r {
   height: 100%;
-  width: 27%;
+  /* width: 27%; */
+  
 }
 
 .button-collect {

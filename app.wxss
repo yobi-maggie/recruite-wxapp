@@ -77,15 +77,15 @@ body {
   color: #333;
 }
 .item-title {
-  display: block;
-  margin-bottom: 6px;
+  display: inline-block;
+  /* margin-bottom: 6px; */
   font-size: 16px;
   font-weight: bold;
 }
 .item-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
   height: 15px;
   line-height: 15px;
 }
@@ -97,10 +97,16 @@ body {
   font-size: 16px;
   color: #00b38a;
   text-align: center;
+  float: right;
 }
 .item-time {
   font-size: 10px;
   color: #888;
+  float: right;
+}
+.item-address {
+  height: 44rpx;
+  line-height: 44rpx;
 }
 /**  职位列表公共样式-end  **/
 
@@ -136,11 +142,44 @@ body {
 
 /* 图标 */
 .icon {
-  background: url('https://raw.githubusercontent.com/guojingfeng1994/lagou/master/static/icon/icon.png') no-repeat;
+  background: URL('./static/icon/icon.png') no-repeat; 
   background-size: 250px 250px;
 }
 
 .icon2 {
-  background: url('https://raw.githubusercontent.com/guojingfeng1994/lagou/master/static/icon/icon2.png') no-repeat;
+  /* background: url('') no-repeat; */
   background-size: 250px 250px;
+}
+.list-item-company {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.sort-index {
+  display: inline-block;
+  /* align-items: center;
+  justify-content: center; */
+  border: 2rpx solid #888;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+
+}
+.list-item-company {
+  padding: 20rpx;
+}
+.list-item-company .item-desc {
+  display: inline-block;
+}
+.list-item-company .com-logo {
+  margin-left: 10rpx;
+}
+
+.list-item-company .sort-index text {
+  display:inline-block;
+  width:25px;
+  height: 25px;
+
 }

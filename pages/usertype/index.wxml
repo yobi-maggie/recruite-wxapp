@@ -1,0 +1,7 @@
+<!--pages/usertype/index.wxml-->
+<view class="content">
+  <view class="btn" bindtap='viewPosition'>我要找工作</view>
+  <view class="btn" bindtap='viewStuff'>我要招人</view>
+    <view class="btn" bindtap='viewAdministrator'>我是管理员</view>
+
+</view>

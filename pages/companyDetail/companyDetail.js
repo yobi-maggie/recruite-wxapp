@@ -7,20 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    /** 
+       * 页面配置 
+       */
+    winWidth: 0,
+    winHeight: 0,  
     header: {
-      title: '职位详情',
+      title: '公司详情',
       leftIcon: true,
       rightIcon: true
     },
+    currentTab: 0,
     isLoading: false, // 请求状态
     companyInfo: '',
     companyShortName: '',
+    companyFullName: '',
     companyId: '',
     companyLogo: '',
-    companyAddress: '',
+    city: '',
+    cities: [],
     selectedIndex: 0, // 默认选中的职位类型
     currentData: {}, // 当前展示的列表数据
-    dataList: []
+    dataList: [],
+    jobNature: '',
+    companyLevel: '',
+    stuffNumber: '',
+    positionList: [],
   },
 
   goBack() {
@@ -30,7 +42,30 @@ Page({
   goHome() {
     app.navTo('index')
   },
+    /** 
+     * 滑动切换tab 
+     */
+  bindChange: function (e) {
 
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+
+  },  
+  /** 
+     * 点击tab切换 
+     */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
   /**
    * 查看职位详情
    */
@@ -69,7 +104,7 @@ Page({
       }
     }
     let tempData = {
-      isLoading: true
+      isLoading: false
     }
     this.setData(tempData)
     http(app.apiName.companyDetail.replace('companyId', this.data.companyId), query).then(res => {
@@ -100,44 +135,27 @@ Page({
    */
   onLoad: function (options) {
     let tempData = {
-      isLoading: true
+      isLoading: false
     }
-    wx.showLoading({ title: '数据加载中...' })
-    this.setData(tempData)
-    http(app.apiName.companyDetail.replace('companyId', options.companyId)).then(res => {
-      tempData.isLoading = false
-      wx.hideToast()
+    var that = this;
 
-      // 公司信息
-      tempData.companyInfo = res.content.companyInfo
-      tempData.companyShortName = res.content.companyShortName
-      tempData.companyId = res.content.companyId
-      tempData.companyAddress = res.content.companyAddress
-      // 处理公司logo
-      tempData.companyLogo = res.content.companyLogo
-      tempData.companyLogo = 'https:' + tempData.companyLogo.substring(tempData.companyLogo.indexOf("//"), tempData.companyLogo.length - 1)
+    /** 
+     * 获取系统信息 
+     */
+    wx.getSystemInfo({
 
-      let pageMap = JSON.parse(res.content.pageMap)
-      tempData.dataList = []
-      tempData.selectedIndex = -1
-      let count = 0 // 索引
-      for (let [k, v] of Object.entries(pageMap)) {
-        if (tempData.selectedIndex == -1 && v.totalCount != 0) {
-          tempData.selectedIndex = count
-          tempData.currentData = {
-            key: k,
-            value: v
-          };
-          (v.totalCount < v.pageSize * v.pageNo || v.totalCount == v.pageSize * v.pageNo) ? tempData.currentData.hasMore = false : tempData.currentData.hasMore = true
-        }
-        tempData.dataList.push({
-          key: k,
-          value: v
-        })
-        count++
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
       }
 
-      this.setData(tempData)
+    });  
+    http('data/companyDetail', options).then((res) => {
+      tempData = res.data;
+      tempData.positionList = res.data.position;
+      this.setData(tempData);
     })
   }
 })

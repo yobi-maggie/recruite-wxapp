@@ -1,10 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/search/search",
     "pages/mine/mine",
-    "pages/customInfo/customInfo",
-    "pages/customDetail/customDetail",
     "pages/resume/resume",
     "pages/collection/collection",
     "pages/deliver/deliver",
@@ -12,12 +9,16 @@
     "pages/positionDetail/positionDetail",
     "pages/companyDetail/companyDetail",
     "pages/interview/interview",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/register/register",
+    "pages/sortList/sortList",
+    "pages/userList/userList",
+    "pages/positionManage/positionManage"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00b38a",
-    "navigationBarTitleText": "拉勾网",
+    "navigationBarTitleText": "人才招聘系统",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -33,10 +34,8 @@
         "selectedIconPath": "static/icon/home_active.png"
       },
       {
-        "pagePath": "pages/search/search",
-        "text": "搜索",
-        "iconPath": "static/icon/search_normal.png",
-        "selectedIconPath": "static/icon/search_active.png"
+        "pagePath": "pages/sortList/sortList",
+        "text": "排行榜"
       },
       {
         "pagePath": "pages/mine/mine",

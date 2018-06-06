@@ -1,25 +1,36 @@
 <!-- 职位列表模板 -->
 <template name='position_link'>
-  <view wx:for='{{positionList}}' wx:key='item.positionId' class='list-item' data-pid='{{item.positionId}}' bindtap="viewPositionDetail">
+  <view wx:for='{{positionList}}' wx:key='item.positionId' class='list-item' data-index="{{index}}" data-pid='{{item.positionId}}' bindtap="viewPositionDetail" bindlongtap='deletePosition'>
     <image class='com-logo' src='{{item.companyLogo}}'></image>
     <view class='item-desc'>
-      <text class='item-title text-ellipsis'>{{item.companyFullName}}</text>
-      <view class='item-info'>
-        <text class='item-pos text-ellipsis'>{{item.city}}</text>
+      <view class="item-head">
+        <text class='item-title text-ellipsis'>{{item.name}}</text>
         <text class='item-salary'>{{item.salary}}</text>
       </view>
-      <text class='item-time'>{{item.createTime}}</text>
+     
+      <view class='item-info'>
+        <text class='item-pos text-ellipsis'>{{item.companyFullName}}</text>
+      </view>
+      <view class="item-address">
+        <text wx:for="{{item.cities}}" wx:for-item="city" wx:for-index="cityIndex" wx:key="{{cityIndex}}" class='item-pos text-ellipsis'>{{city.nameStr}} <text wx:if="{{cityIndex < item.cities.length - 1}}">| </text></text>
+        <text wx:if="{{item.experience}}" class="item-pos text-ellipis">| {{item.experience}}</text>
+        <text  wx:if="{{item.department}}" class="item-pos text-ellipis">| {{item.department}}</text>
+        <text class='item-time'>{{item.createTime}}</text>
+      </view>
+      
     </view>
   </view>
 </template>
 <!-- 城市列表模板 -->
 <template name='cityList'>
-  <block wx:if='{{cities.length > 0}}' wx:for='{{cities}}' wx:for-index="index" wx:for-item="item">
+  <block wx:if='{{cities.length > 0}}' wx:for='{{cities}}' wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
     <view class="cities-header">{{item.nameStr}}</view>
     <view class="cities-list">
-      <view wx:for='{{item.cityGroup}}' wx:for-index="idx" wx:for-item="cities" class="cities-list-item">
-        <view wx:for='{{cities}}' wx:for-index="i" wx:for-item="cityName" class="activeable cities-item {{city == cityName ? 'cities-item-selected' : ''}}"
-          data-city-name="{{cityName}}" bindtap='selectCity'>{{cityName}}</view>
+      <view wx:for='{{item.cityGroup}}' wx:for-index="idx" wx:for-item="cities" wx:key="{{idx}}" class="cities-list-item">
+        <view wx:for='{{cities}}' wx:for-index="i" wx:key="{{i}}" wx:for-item="cityName" class="activeable cities-item {{city == cityName ? 'cities-item-selected' : ''}}"
+          data-city-name="{{cityName}}" bindtap='selectCity'>
+            <text>{{cityName}}</text> 
+          </view>
       </view>
     </view>
   </block>
@@ -36,3 +47,26 @@
     </view>
   </view>
 </template>
+<template name="company_link">
+  <view wx:for="{{companyList}}" wx:key="{{item.companyId}}" class="list-item-company" data-index="{{index}}" data-cid="{{item.companyId}}" bindtap="viewCompanyDetail">
+    <view class="sort-index">
+      <text>{{index + 1}}</text>
+    </view>
+    <view class="item-desc">
+      <view class="item-head">
+        <text class='item-title text-ellipsis'>{{item.companyFullName}}</text>
+      </view>
+      <view class="item-address">
+        <text class="item-pos text-ellipsis">{{item.city}}/{{item.jobNature}}/{{(item.position ? item.position.length : 0)+ '个在招职位'}}</text>
+      </view>
+      <view class="item-info">
+        <text class="item-pos text-ellipsis">{{item.owner}}</text>
+      </view>
+    </view>
+    <image class='com-logo' src='{{item.companyLogo}}'></image>
+  </view>
+</template>
+
+<!-- <template name="user_link">
+
+</template> -->

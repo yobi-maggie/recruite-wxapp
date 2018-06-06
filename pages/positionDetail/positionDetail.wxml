@@ -13,23 +13,18 @@
   <view class="detail">
     <view class="items">
       <view class="item text-ellipsis salary">
-        <view class="icon"></view>
-        <text class="text">{{salary}}</text>
+        <!-- <view class="icon"></view> -->
+        <text class="text">{{salary}}/</text>
       </view>
       <view class="item text-ellipsis work-address three-n-1">
-        <view class="icon"></view>
-        <text class="text">{{positionAddress}}</text>
-      </view>
-      <view class="item text-ellipsis job-nature three-n">
-        <view class="icon"></view>
-        <text class="text">{{jobNature}}</text>
+        <!-- <view class="icon"></view> -->
+        <text class="text">{{positionAddress}}/</text>
       </view>
       <view class="item text-ellipsis work-year">
-        <view class="icon"></view>
-        <text class="text">{{workYear}}</text>
+        <!-- <view class="icon"></view> -->
+        <text class="text">{{workYear}}/</text>
       </view>
       <view class="item text-ellipsis education three-n-1">
-        <view class="icon"></view>
         <text class="text">{{education}}</text>
       </view>
     </view>
@@ -41,20 +36,37 @@
     <image wx:if='{{companyLogo}}' class="com-logo" src="{{companyLogo}}" />
     <view class="item-desc">
       <view class="desc-l">
+      
         <view class="title text-ellipsis">{{companyShortName}}</view>
-        <view class="info">{{companyInfo}}</view>
-      </view>
-      <view class="desc-r">
-        <view class="icon authentication"></view>
+        <!-- <view class="info">{{companyInfo}}</view> -->
+        <!-- <view class="desc-r">
+          <view class="icon authentication"></view>
+        </view> -->
+        <view class="items">
+           <view class="item text-ellipsis company-level">
+            <!-- <view class="icon"></view> -->
+            <text class="text">{{companyLevel}}/</text>
+          </view>
+          <view class="item text-ellipsis styuff-number three-n-1">
+            <text class="text">{{stuffNumber}}/</text>
+          </view>
+          <view class="item text-ellipsis job-nature three-n">
+              <!-- <view class="icon"></view> -->
+            <text class="text">{{jobNature}}</text>
+          </view>
+          
+        </view>
+       
       </view>
     </view>
+
   </view>
   <!-- 公司简介-end -->
   <!-- 职位描述-start -->
   <view class="position-desc">
     <view class="header">职位描述</view>
     <view class="content">
-      <view wx:if='{{positionDesc}}' wx:for='{{positionDesc}}'>{{item}}</view>
+      <view wx:if='{{positionDesc}}' wx:for='{{positionDesc}}' wx:key="{{index}}">{{item}}</view>
     </view>
   </view>
   <!-- 职位描述-end -->
@@ -104,7 +116,7 @@
     <view wx:if='{{page.hasNextPage}}' class="eval-all">查看全部{{page.totalCount}}条评价</view>
   </view>
   <!-- 面试评价-end -->
-  <view class="fix-btn">
+  <view class="fix-btn" wx-if="{{userData.userType == 'candidate'}}">
     <view class="deliver-resume">投递简历</view>
   </view>
 </view>

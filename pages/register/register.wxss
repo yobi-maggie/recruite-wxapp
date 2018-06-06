@@ -1,3 +1,4 @@
+/* pages/register/register.wxss */
 page {
   background: linear-gradient(135deg,#029253,#00887b);
 }
@@ -29,7 +30,6 @@ page {
   color: #333;
   background: #fff;
   border-radius: 0;
-  border-radius: 0;
   padding: 6% 5%;
   margin: 0;
 }
@@ -49,6 +49,7 @@ page {
   margin: 20px 0;
   padding: 5%;
 }
+
 .title{
   display: inline-block;
   /* width: 50%; */
@@ -57,4 +58,7 @@ page {
 .reg {
   float: right;
   color: aquamarine;
+}
+.radio {
+  color: rgba(109,109,109, 0.8);
 }

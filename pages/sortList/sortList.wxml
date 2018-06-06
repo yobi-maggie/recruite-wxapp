@@ -1,0 +1,7 @@
+
+<import src='../../template/template.wxml' />
+<view class="container">
+  <template is='header' data='{{header}}'></template>
+  <template is='company_link' data='{{companyList}}' />
+    <view wx:if='{{showBtn}}' class="list-more" bindtap='loadMore'>{{ isLoading ? '正在加载...': '加载更多' }}</view>
+</view>

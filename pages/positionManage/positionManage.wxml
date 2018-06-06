@@ -1,0 +1,5 @@
+<!--pages/positionManage/positionManage.wxml-->
+<import src='../../template/template.wxml' />
+<view class="content">
+   <template is='position_link' data='{{positionList}}' />
+</view>

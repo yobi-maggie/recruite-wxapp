@@ -4,16 +4,16 @@
     <image class="resume-header-bg" src="../../static/images/resume_head.png" />
     <view class="none-work">
       <view class="resume-avatar-bg"></view>
-      <image class="resume-avatar" src="../../static/images/company_logo.png" />
+      <image class="resume-avatar" src="{{userInfo.avatarUrl}}" />
     </view>
   </view>
   <view class="resume-content">
     <view class="person">
-      <text class="name">kurt</text>
-      <image class="sex" src="../../static/icon/man.png" />
+      <text class="name">{{userInfo.nickName}}</text>
+      <!-- <image class="sex" src="../../static/icon/man.png" /> -->
     </view>
     <view class="resume-text">
-      <text>专注前端的全栈</text>
+      <text>{{resumeData.name}}</text>
     </view>
     <!-- 基本信息-start -->
     <view class="resume-section">
@@ -24,27 +24,28 @@
       <view class="resume-detail">
         <view>
           <text class="detail-key c8">最高学历：</text>
-          <text class="detail-value">大专</text>
+          <text class="detail-value">{{resumeData.department}}</text>
+          
         </view>
         <view>
           <text class="detail-key c8">工作年限：</text>
-          <text class="detail-value">1年</text>
+          <text class="detail-value">{{resumeData.experience}}</text>
         </view>
         <view>
           <text class="detail-key c8">出生年份：</text>
-          <text class="detail-value">1994.03</text>
+          <text class="detail-value">{{resumeData.birthDate}}</text>
         </view>
         <view>
           <text class="detail-key c8">所在城市：</text>
-          <text class="detail-value">深圳</text>
+          <text class="detail-value">{{resumeData.city}}</text>
         </view>
         <view>
           <text class="detail-key c8">联系电话：</text>
-          <text class="detail-value">132****6373</text>
+          <text class="detail-value">{{resumeData.phone}}</text>
         </view>
         <view>
           <text class="detail-key c8">联系邮箱：</text>
-          <text class="detail-value">474***024@qq.com</text>
+          <text class="detail-value">{{resumeData.email}}</text>
         </view>
       </view>
     </view>
@@ -56,14 +57,14 @@
         <text>教育经历</text>
       </view>
       <view class="resume-list">
-        <view class="resume-item resume-item-last">
+        <view  wx:for="{{resumeData.education}}" wx:key="{{index}}" class="resume-item resume-item-last">
           <view class="status-time">
             <view class="dot"></view>
-            <text class="c8">2016年毕业</text>
+            <text class="c8">{{item.graductionYear}}年毕业</text>
           </view>
           <view class="status-text">
-            <view>深圳信息职业技术学院</view>
-            <view class="c8">大专·计算机相关专业</view>
+            <view>{{graductionYear.school}}</view>
+            <view class="c8">{{graductionYear.profession}}</view>
           </view>
         </view>
       </view>
@@ -76,32 +77,33 @@
         <text>工作经历</text>
       </view>
       <view class="resume-list">
-        <view class="resume-item">
+        <view wx:for="{{resumeData.workExperience}}" class="{{'resume-item ' + (index < resumeData.workExperience.length - 1 ? '' : 'resume-item-last' )}}"  wx:key="{{index}}">
           <view class="status-time">
             <view class="dot"></view>
-            <text class="c8">2016.03-2017.06</text>
+            <text class="c8">{{item.time}}</text>
+          </view>
+          <view class="status-text">
+            <view>{{item.company}}</view>
+            <view class="c8">{{item.position}}</view>
+            <view class="position-desc">
+            {{item.desc}}
+              <!-- 负责公司的一些前端业务，帮助公司完成客户的需求，自主学习前端主流技术来解决实际工作中遇到的问题，并能帮遇到相同问题的人解决自己遇到过的问题。 -->
+            </view>
+          </view>
+        </view>
+        <!-- <view class="resume-item resume-item-last">
+          <view class="status-time">
+            <view class="dot"></view>
+            <text class="c8">2018.03-至今</text>
           </view>
           <view class="status-text">
             <view>XX公司名称</view>
             <view class="c8">web前端工程师</view>
             <view class="position-desc">
-              负责公司的一些前端业务，帮助公司完成客户的需求，自主学习前端主流技术来解决实际工作中遇到的问题，并能帮遇到相同问题的人解决自己遇到过的问题。
+               负责公司的一些前端业务，帮助公司完成客户的需求，自主学习前端主流技术来解决实际工作中遇到的问题，并能帮遇到相同问题的人解决自己遇到过的问题。 
             </view>
           </view>
-        </view>
-        <view class="resume-item resume-item-last">
-          <view class="status-time">
-            <view class="dot"></view>
-            <text class="c8">2015.03-2016.03</text>
-          </view>
-          <view class="status-text">
-            <view>XX公司名称</view>
-            <view class="c8">web前端工程师</view>
-            <view class="position-desc">
-              负责公司的一些前端业务，帮助公司完成客户的需求，自主学习前端主流技术来解决实际工作中遇到的问题，并能帮遇到相同问题的人解决自己遇到过的问题。
-            </view>
-          </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <!-- 工作经历-end -->
@@ -112,7 +114,27 @@
         <text>项目经验</text>
       </view>
       <view class="resume-list">
-        <view class="resume-item">
+        <view wx:for="{{resumeData.projectExperience}}" class="{{'resume-item ' + (index < resumeData.projectExperience.length - 1 ? '' : 'resume-item-last')}}" wx:key="{{index}}">
+          <view class="status-time">
+            <view class="dot"></view>
+            <text class="c8">{{item.time}}</text>
+          </view>
+          <view class="status-text">
+            <view>
+              <text class="c8">项目名称：</text>
+              <text>{{item.name}}</text>
+            </view>
+            <view>
+              <text class="c8">工作内容：</text>
+              <text>{{item.mission}}</text>
+            </view>
+            <view class="production-desc">
+              {{item.desc}}
+              <!-- 对PC端官网前后端进行维护，改版以及使用JAVA添加新模块 -->
+            </view>
+          </view>
+        </view>
+        <!-- <view class="resume-item resume-item-last">
           <view class="status-time">
             <view class="dot"></view>
             <text class="c8">2016.03-2017.06</text>
@@ -127,29 +149,10 @@
               <text>web前端工程师</text>
             </view>
             <view class="production-desc">
-              对PC端官网前后端进行维护，改版以及使用JAVA添加新模块
+               对PC端官网前后端进行维护，改版以及使用JAVA添加新模块 
             </view>
           </view>
-        </view>
-        <view class="resume-item resume-item-last">
-          <view class="status-time">
-            <view class="dot"></view>
-            <text class="c8">2016.03-2017.06</text>
-          </view>
-          <view class="status-text">
-            <view>
-              <text class="c8">项目名称：</text>
-              <text>XXX项目</text>
-            </view>
-            <view>
-              <text class="c8">项目负责人：</text>
-              <text>web前端工程师</text>
-            </view>
-            <view class="production-desc">
-              对PC端官网前后端进行维护，改版以及使用JAVA添加新模块
-            </view>
-          </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <!-- 项目经验-end -->
@@ -161,7 +164,8 @@
       </view>
       <view class="resume-list">
         <view>
-          平时喜欢看编程书籍以及名人博客，至今看过犀牛书、JavaScript高级程序设计3、JavaScript设计模式、You Don't Know JS系列等，时常关注阮一峰、张鑫旭、王福朋等大神博客。基础知识扎实，擅长vue.js，有个人和公司的项目经验支撑，也可转向原生或其他框架学习。
+          {{resumeData.evaluation}}
+          <!-- 平时喜欢看编程书籍以及名人博客，至今看过犀牛书、JavaScript高级程序设计3、JavaScript设计模式、You Don't Know JS系列等，时常关注阮一峰、张鑫旭、王福朋等大神博客。基础知识扎实，擅长vue.js，有个人和公司的项目经验支撑，也可转向原生或其他框架学习。 -->
         </view>
       </view>
     </view>
@@ -175,22 +179,22 @@
       <view class="resume-detail">
         <view>
           <text class="detail-key c8">期望职位：</text>
-          <text class="detail-value">web前端工程师</text>
+          <text class="detail-value">{{resumeData.jobExpectation.position}}</text>
         </view>
         <view>
           <text class="detail-key c8">工作性质：</text>
-          <text class="detail-value">全职</text>
+          <text class="detail-value">{{resumeData.jobExpectation.nature}}</text>
         </view>
         <view>
           <text class="detail-key c8">期望月薪：</text>
-          <text class="detail-value">50K以上</text>
+          <text class="detail-value">{{resumeData.jobExpectation.salary}}</text>
         </view>
         <view>
           <text class="detail-key c8">期望城市：</text>
-          <text class="detail-value">深圳</text>
+          <text class="detail-value">{{resumeData.jobExpectation.city}}</text>
         </view>
         <view>
-          擅长JS逻辑，能独立开发前端项目，会切图。
+          {{resumeData.jobExpectation.advantage}}
         </view>
       </view>
     </view>
@@ -202,31 +206,31 @@
         <text>技能评价</text>
       </view>
       <view class="resume-detail skill-list">
-        <view class="skill-item">
-          <view class="skill-name">HTML,CSS,JavaScript（ES5/ES6）</view>
+        <view class="skill-item" wx:for="{{resumeData.skills}}" wx:key="{{index}}">
+          <view class="skill-name">{{item.name}}</view>
           <view class="skill-bar">
-            <view style="width:80%;" class="skill-bar-inner">
+            <view style="{{'width:' + item.degree.value + ';'}}" class="skill-bar-inner">
               <view class="skill-icon">
                 <image class="skill-img" src="../../static/icon/rectangle.png" />
-                <text class="skill-text">精通</text>
+                <text class="skill-text">{{item.degree.label}}</text>
               </view>
             </view>
           </view>
         </view>
-        <view class="skill-item">
-            <view class="skill-name">vue.js,jq</view>
-            <view class="skill-bar">
-              <view style="width:60%;" class="skill-bar-inner">
-                <view class="skill-icon">
-                  <image class="skill-img" src="../../static/icon/rectangle.png" />
-                  <text class="skill-text">掌握</text>
-                </view>
+        <!-- <view class="skill-item">
+          <view class="skill-name">vue.js,jq</view>
+          <view class="skill-bar">
+            <view style="width:60%;" class="skill-bar-inner">
+              <view class="skill-icon">
+                <image class="skill-img" src="../../static/icon/rectangle.png" />
+                <text class="skill-text">掌握</text>
               </view>
             </view>
           </view>
+        </view> -->
       </view>
     </view>
     <!-- 技能评价-end -->
-    <view class="footer">我已离职，可快速到岗</view>
+    <view class="footer">{{resumeData.entryTime}}</view>
   </view>
 </view>
