@@ -66,7 +66,30 @@
     <image class='com-logo' src='{{item.companyLogo}}'></image>
   </view>
 </template>
+<template name='position_link_admin'>
+  <view wx:for='{{positionList}}' wx:key='item.positionId' class='list-item' data-index="{{index}}" data-pid='{{item.positionId}}' bindtap="viewPositionDetail" bindlongtap='deletePosition'>
+    <image class='com-logo' src='{{item.companyLogo}}'></image>
 
+    <view class='item-desc'>
+      <view class="item-head">
+        <text class='item-title text-ellipsis'>{{item.name}}</text>
+        <text class='item-salary'>{{item.salary}}</text>
+
+      </view>
+     
+      <view class='item-info'>
+        <text class='item-pos text-ellipsis'>{{item.companyFullName}}</text>
+      </view>
+      <view class="item-address">
+        <text wx:for="{{item.cities}}" wx:for-item="city" wx:for-index="cityIndex" wx:key="{{cityIndex}}" class='item-pos text-ellipsis'>{{city.nameStr}} <text wx:if="{{cityIndex < item.cities.length - 1}}">| </text></text>
+        <text wx:if="{{item.experience}}" class="item-pos text-ellipis">| {{item.experience}}</text>
+        <text  wx:if="{{item.department}}" class="item-pos text-ellipis">| {{item.department}}</text>
+        <text class='item-time'>{{item.createTime}}</text>
+      </view>
+    </view>
+    
+  </view>
+</template>
 <!-- <template name="user_link">
 
 </template> -->

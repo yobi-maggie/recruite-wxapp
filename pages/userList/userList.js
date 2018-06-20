@@ -5,6 +5,7 @@ const app = getApp()
 const userTypeMap = {
   "candidate": '个人用户',
   "interviewer": "企业用户",
+  "administor": "管理员",
   
 }
 Page({
@@ -41,6 +42,15 @@ Page({
   onLoad: function (options) {
     http('users').then((res) => {
       console.log(res);
+      const template = res.data.map((item) => {
+        item.userTypeDetail = {
+          name: userTypeMap[item.userType],
+        };
+        return item;
+      })
+      this.setData({
+        userList: template.filter((item) => item.userName != app.globalData.userId),
+      })
     })
   },
   /**
@@ -49,7 +59,20 @@ Page({
   onReady: function () {
   
   },
+  forbiddenUser(e) {
+    console.log(e);
+    let userDetail = e.currentTarget.dataset.user;
+    userDetail.isDisable = !userDetail.isDisable;
+    const self = this;
+    http('users/change', {
+        userDetail:JSON.stringify(userDetail)
+      }, 'POST').then((res) => {
+        if (res.status == 200) {
+            self.onLoad();
+        }
+    })
 
+  },
   /**
    * 生命周期函数--监听页面显示
    */

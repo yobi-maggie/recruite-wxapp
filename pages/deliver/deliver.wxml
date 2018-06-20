@@ -1,10 +1,8 @@
 <!--pages/deliver/deliver.wxml-->
 <view class="deliver">
-  <view class="tab">
-    <view class="tab-item selected">全部</view>
-    <view class="tab-item">邀请面试</view>
-    <view class="tab-item">不合适</view>
-  </view>
+   <view class="tab">
+    <view class="tab-item selected">已投递简历</view>
+  </view> 
   <view class="content-list">
     <view wx:if="{{true}}" class="content-item" bindtap="viewDeliverDetail">
       <view class="content-item-title text-ellipsis">前端开发工程师（6k-12k）</view>

@@ -1,5 +1,4 @@
-/* pages/positionManage/positionManage.wxss */
-
+/* pages/interviewer/index.wxss */
 button {
   font-size: 14px;
   width: 60px;

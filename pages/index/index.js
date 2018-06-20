@@ -40,7 +40,7 @@ Page({
   search(e) {
     if (!e.value) return
     this.data.keyword = e.value
-    
+    this.loadData()
   },
   // 搜索
   iconSearch() {
@@ -103,18 +103,11 @@ Page({
     //   }]
     // }]
     // this.setData(tempData)
-    console.log('app.isLogin', app.isLogin)
-    // http('users/login', {
-    //   userName: 'xxx',
-    //   password: 'test',
-    // }, 'POST').then((res) => {
-    //   console.log(res);
-    //   if (res.status !== 200) {
-    //     app.navTo('login')
-    //   }
-    // });
-
-    http('data/webJob').then((res) => {
+    console.log('app.isLogin', app.isLogin, this.data.city, this.data.keyword)
+    http('data/webJob', {
+      city: this.data.city,
+      keyword: this.data.keyword ? this.data.keyword: '',
+    }).then((res) => {
       console.log(res);
       if (res.statu == 301) {
           app.navTo('login');
@@ -122,21 +115,21 @@ Page({
         this.setData({
           positionList: res.data
         })
-        if (!res.data.length) {
-          http('data/position', {
-            name: '前端工程师', companyLogo: '../../static/icon/jd_portrait.png', companyFullName: '京东', city: '北京', salary: '15k-30k', createTime: '4月15日', cities: JSON.stringify([{ nameStr: '北京' }, { nameStr: '海淀区' }]), experience: '1-3年', department: '本科',
-            haveCollect: 'haveCollecct',
-            jobNature: "移动互联网",
-            advantage: '待遇丰厚，免费午餐，零食',
-            companyInfo: '京东JD.COM-专业的综合网上购物商城，销售超数万品牌，4020万种商品，囊括家电、手机、电脑、母婴、个护、服装、图书、食品、旅游等13大品类。秉承客户为先的理念，京东所售商品100%正品行货、全国联保、机打发票。提供专业配送、售后服务，为您提供愉悦的购物体验！',
-            companyId: '12000',
-            positionDesc: JSON.stringify(['工作内容：', '1.进行竞品分析和需求调研，负责产品整合营销活动，', '2.文笔好，对新媒体文案，创意，黑客增长感兴趣，分析数据，协助部门经理提升公司产品粉丝量，曝光度，app下载量', '3.公众号运营和活动策划等', '4.完成上级临时交办的其他工作', '岗位要求：', '1.大学本科及以上学历', '2.公司在快速成长，要适应能力强，吃苦耐劳，有责任心']),
-            owner: 'dongmeiqi'
+        // if (!res.data.length) {
+        //   http('data/position', {
+        //     name: '前端工程师', companyLogo: '../../static/icon/jd_portrait.png', companyFullName: '京东', city: '北京', salary: '15k-30k', createTime: '4月15日', cities: JSON.stringify([{ nameStr: '北京' }, { nameStr: '海淀区' }]), experience: '1-3年', department: '本科',
+        //     haveCollect: 'haveCollecct',
+        //     jobNature: "移动互联网",
+        //     advantage: '待遇丰厚，免费午餐，零食',
+        //     companyInfo: '京东JD.COM-专业的综合网上购物商城，销售超数万品牌，4020万种商品，囊括家电、手机、电脑、母婴、个护、服装、图书、食品、旅游等13大品类。秉承客户为先的理念，京东所售商品100%正品行货、全国联保、机打发票。提供专业配送、售后服务，为您提供愉悦的购物体验！',
+        //     companyId: '12000',
+        //     positionDesc: JSON.stringify(['工作内容：', '1.进行竞品分析和需求调研，负责产品整合营销活动，', '2.文笔好，对新媒体文案，创意，黑客增长感兴趣，分析数据，协助部门经理提升公司产品粉丝量，曝光度，app下载量', '3.公众号运营和活动策划等', '4.完成上级临时交办的其他工作', '岗位要求：', '1.大学本科及以上学历', '2.公司在快速成长，要适应能力强，吃苦耐劳，有责任心']),
+        //     owner: 'dongmeiqi'
 
-          }, 'POST').then((res) => {
-            console.log(res);
-          })
-        }
+        //   }, 'POST').then((res) => {
+        //     console.log(res);
+        //   })
+        // }
       }
     })
    

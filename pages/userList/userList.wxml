@@ -16,7 +16,7 @@
         </view>
       </view>
       <view class="handle">
-        <button  type="default"  size="mini">管理</button>
+        <button type="default" size="mini" bindtap='forbiddenUser'  data-index="{{item.userName}}" data-user="{{item}}">{{item.isDisable ? '启用': '禁用'}}</button>
       </view>
     </view>
   </view>

@@ -1,0 +1,8 @@
+<!--pages/adminPageCanvas/adminPageCanvas.wxml-->
+<view class="container">
+  <view class="tab">
+    <view class="tab-item selected">用户地区分布示意图</view>
+     <view class="tab-item">公司分布示意图</view>
+  </view> 
+  <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+</view>

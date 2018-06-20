@@ -1,7 +1,9 @@
 /* pages/mine/mine.wxss */
 .container {
-  margin-bottom: 45px;
-  padding: 0 15px;
+  /* margin-bottom: 45px; */
+  height: 100%;
+  padding: 0 15px 45px 15px;
+  /* background-color: #eee;  */
 }
 
 .login-info {
@@ -73,14 +75,17 @@
   justify-content: center;
   align-items: center;
   flex-basis: 48%;
-  height: 86px;
-  line-height: 86px;
+  height: 100px;
+  line-height: 100px;
   background-color: #1fc8a1;
   text-align: center;
   color: #fff;
   font-size: 16px;
 }
-
+.wholeline {
+  width: 100%;
+  flex-basis: 100%;
+}
 .button .num {
   margin-left: 5px;
   width: 23px;

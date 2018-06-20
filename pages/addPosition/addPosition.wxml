@@ -1,0 +1,46 @@
+<!--pages/addPosition/addPosition.wxml-->
+<view class="content">
+  <view class="step">
+    <text>职位名称：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>公司全名:</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+   <text> 所在城市：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>详细地址：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>薪资：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>工作经验：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>公司ID：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>职位优势：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>工作性质：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view class="step">
+    <text>负责人名称：</text>
+    <input class="positionName" placeholder="请输入" auto-focus/>
+  </view>
+  <view>
+    <button>提交</button>
+  </view>
+</view>

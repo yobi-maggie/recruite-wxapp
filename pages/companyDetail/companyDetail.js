@@ -153,7 +153,13 @@ Page({
 
     });  
     http('data/companyDetail', options).then((res) => {
-      tempData = res.data;
+      if (res.data.status && res.data.status != 200) {
+        return wx.showModal({
+          title: '提示',
+          content: res.data.msg,
+        })
+      }
+      tempData = res.data.companyDetail;;
       tempData.positionList = res.data.position;
       this.setData(tempData);
     })

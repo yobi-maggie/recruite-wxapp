@@ -310,7 +310,9 @@
   text-align: center;
   border-radius: 3px;
 }
-
+.is-deliver {
+  background-color: #ccc;
+}
 .com-logo {
   border-radius: 50%;
 }

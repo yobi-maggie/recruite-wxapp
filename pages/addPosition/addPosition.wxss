@@ -1,0 +1,13 @@
+/* pages/addPosition/addPosition.wxss */
+.step {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+  /* height: 80rpx; */
+  padding: 20rpx;
+  /* vertical-align: bottom; */
+}
+
+text {
+  width: 200rpx;
+}

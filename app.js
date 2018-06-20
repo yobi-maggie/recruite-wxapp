@@ -37,7 +37,7 @@ App({
     })
   },
   globalData: {
-    userId: 'dongmeiqi',
+    userId: 'interviewer',
     userData: {
       userType: 'administor',
       userName: 'administor'
@@ -46,6 +46,7 @@ App({
   isLogin: false,
   navTo(routerName, qeury) {
     let routes = {
+      adminPageCanvas: "../adminPageCanvas/adminPageCanvas",
       index: "../index/index",
       search: "../search/search",
       mine: "../mine/mine",
@@ -57,12 +58,14 @@ App({
       deliverDetail: "../deliverDetail/deliverDetail",
       positionDetail: "../positionDetail/positionDetail",
       companyDetail: "../companyDetail/companyDetail",
-      interview: "../interview/interview",
+      inviteInterview: "../interview/interview",
+      interview: "../interviewer/index",
       login: "../login/login",
       register: "../register/register",
       userType: '../usertype/index',
       userlist: '../userList/userList',
-      positionManage: '../positionManage/positionManage'
+      positionManage: '../positionManage/positionManage',
+      adminUserCanvas: "../adminPageCanvas/adminPageCanvas"
     }
 
     let options = {}

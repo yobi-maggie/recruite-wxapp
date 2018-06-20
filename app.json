@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/mine/mine",
     "pages/resume/resume",
@@ -13,10 +14,14 @@
     "pages/register/register",
     "pages/sortList/sortList",
     "pages/userList/userList",
+    "pages/interviewer/index",
+    "pages/addPosition/addPosition",
+    "pages/adminPageCanvas/adminPageCanvas",
     "pages/positionManage/positionManage"
   ],
   "window": {
     "backgroundTextStyle": "light",
+    "backgroundColor": "#eee",
     "navigationBarBackgroundColor": "#00b38a",
     "navigationBarTitleText": "人才招聘系统",
     "navigationBarTextStyle": "white"
@@ -35,7 +40,7 @@
       },
       {
         "pagePath": "pages/sortList/sortList",
-        "text": "排行榜"
+        "text": "公司"
       },
       {
         "pagePath": "pages/mine/mine",

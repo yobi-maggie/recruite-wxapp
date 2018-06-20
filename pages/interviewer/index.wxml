@@ -1,4 +1,4 @@
-<!--pages/positionManage/positionManage.wxml-->
+<!--pages/interviewer/index.wxml-->
 <import src='../../template/template.wxml' />
 <view class="content">
    <template is='position_link_admin' data='{{positionList}}' />

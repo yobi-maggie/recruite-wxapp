@@ -37,7 +37,12 @@ Page({
   viewInterview: () => {
     app.navTo('interview')
   },
-
+  /**
+   * 已邀请面试
+   */
+  viewInviteInterview: () => {
+    app.navTo('inviteInterview')
+  },
   /**
    * 查看收藏
    */
@@ -51,7 +56,9 @@ Page({
   viewUserList: () => {
     app.navTo('userlist')
   },
-
+  viewCanvasUser: () => {
+    app.navTo('adminUserCanvas')
+  },
   viewPositionList() {
     app.navTo('positionManage')
   },

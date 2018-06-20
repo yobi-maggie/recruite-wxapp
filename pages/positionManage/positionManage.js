@@ -1,5 +1,6 @@
 // pages/positionManage/positionManage.js
 var http = require('../../utils/http.js')
+var app = getApp();
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
   viewPositionDetail() {},
   deletePosition(e) {
     console.log(e);
+    var self = this;
     wx.showModal({
       title: '提示',
       content: '确认删除？',
@@ -18,9 +20,10 @@ Page({
       success: function (response) {
         if (response.confirm) {
           http('data/position_delete', {
-            positionId: e.currentTarget.pid
+            positionId: e.currentTarget.dataset.pid
           }, 'DELETE').then((res) => {
             console.log(res);
+            self.onLoad();
           })
         } else if (response.cancel) {
         }
@@ -49,7 +52,14 @@ Page({
   onReady: function () {
   
   },
-
+//   /**
+//  * 查看职位详情
+//  */
+//   viewPositionDetail: (e) => {
+//     app.navTo('positionDetail', {
+//       positionId: e.currentTarget.dataset.pid
+//     })
+//   },
   /**
    * 生命周期函数--监听页面显示
    */

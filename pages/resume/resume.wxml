@@ -10,7 +10,6 @@
   <view class="resume-content">
     <view class="person">
       <text class="name">{{userInfo.nickName}}</text>
-      <!-- <image class="sex" src="../../static/icon/man.png" /> -->
     </view>
     <view class="resume-text">
       <text>{{resumeData.name}}</text>

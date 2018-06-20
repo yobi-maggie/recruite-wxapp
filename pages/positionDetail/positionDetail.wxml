@@ -3,10 +3,10 @@
 <view hidden='{{isLoading}}' class="position-detail">
   <template is='header' data='{{header}}'></template>
   <view class="pos-title">
-    <view class="title text-ellipsis">{{positionName}}</view>
-    <view class="collection-icon">
-      <view class="icon {{haveCollect == true ? 'collected' : 'uncollect'}}"></view>
-      <text class="text">{{haveCollect == true ? '已收藏' : '未收藏'}}</text>
+    <view class="title text-ellipsis">{{positionDetail.positionName}}</view>
+    <view class="collection-icon" bindtap='collectChange' data-position="">
+      <view class="icon {{positionDetail.haveCollect == true ? 'collected' : 'uncollect'}}"></view>
+      <text class="text">{{positionDetail.haveCollect == true ? '已收藏' : '未收藏'}}</text>
     </view>
   </view>
   <!-- 职位详情-start -->
@@ -14,30 +14,30 @@
     <view class="items">
       <view class="item text-ellipsis salary">
         <!-- <view class="icon"></view> -->
-        <text class="text">{{salary}}/</text>
+        <text class="text">{{positionDetail.salary}}/</text>
       </view>
       <view class="item text-ellipsis work-address three-n-1">
         <!-- <view class="icon"></view> -->
-        <text class="text">{{positionAddress}}/</text>
+        <text class="text">{{positionDetail.positionAddress}}/</text>
       </view>
       <view class="item text-ellipsis work-year">
         <!-- <view class="icon"></view> -->
-        <text class="text">{{workYear}}/</text>
+        <text class="text">{{positionDetail.workYear}}/</text>
       </view>
       <view class="item text-ellipsis education three-n-1">
-        <text class="text">{{education}}</text>
+        <text class="text">{{positionDetail.education}}</text>
       </view>
     </view>
-    <view wx:if='{{!!advantage}}' class="temptation">职位诱惑：{{advantage}}</view>
+    <view wx:if='{{!!positionDetail.advantage}}' class="temptation">职位诱惑：{{positionDetail.advantage}}</view>
   </view>
   <!-- 职位详情-end -->
   <!-- 公司简介-start -->
-  <view class="company" data-cid='{{companyId}}' bindtap="viewCompanyDetail">
-    <image wx:if='{{companyLogo}}' class="com-logo" src="{{companyLogo}}" />
+  <view class="company" data-cid='{{positionDetail.companyId}}' bindtap="viewCompanyDetail">
+    <image wx:if='{{positionDetail.companyLogo}}' class="com-logo" src="{{positionDetail.companyLogo}}" />
     <view class="item-desc">
       <view class="desc-l">
       
-        <view class="title text-ellipsis">{{companyShortName}}</view>
+        <view class="title text-ellipsis">{{positionDetail.companyShortName}}</view>
         <!-- <view class="info">{{companyInfo}}</view> -->
         <!-- <view class="desc-r">
           <view class="icon authentication"></view>
@@ -45,14 +45,14 @@
         <view class="items">
            <view class="item text-ellipsis company-level">
             <!-- <view class="icon"></view> -->
-            <text class="text">{{companyLevel}}/</text>
+            <text class="text">{{positionDetail.companyLevel}}/</text>
           </view>
           <view class="item text-ellipsis styuff-number three-n-1">
-            <text class="text">{{stuffNumber}}/</text>
+            <text class="text">{{positionDetail.stuffNumber}}/</text>
           </view>
           <view class="item text-ellipsis job-nature three-n">
               <!-- <view class="icon"></view> -->
-            <text class="text">{{jobNature}}</text>
+            <text class="text">{{positionDetail.jobNature}}</text>
           </view>
           
         </view>
@@ -66,7 +66,7 @@
   <view class="position-desc">
     <view class="header">职位描述</view>
     <view class="content">
-      <view wx:if='{{positionDesc}}' wx:for='{{positionDesc}}' wx:key="{{index}}">{{item}}</view>
+      <view wx:if='{{positionDetail.positionDesc}}' wx:for='{{positionDetail.positionDesc}}' wx:key="{{index}}">{{item}}</view>
     </view>
   </view>
   <!-- 职位描述-end -->
@@ -116,7 +116,9 @@
     <view wx:if='{{page.hasNextPage}}' class="eval-all">查看全部{{page.totalCount}}条评价</view>
   </view>
   <!-- 面试评价-end -->
-  <view class="fix-btn" wx-if="{{userData.userType == 'candidate'}}">
-    <view class="deliver-resume">投递简历</view>
+  <view class="fix-btn" wx-if="{{userData.userType == 'candidate'}}" >
+    <view wx-if="{{!isDeliver}}" class="deliver-resume" bindtap="deliverResume">投递简历</view>
+    <view wx-else-if="{{isDeliver}}" class="deliver-resume is-deliver">已投递</view>
   </view>
+
 </view>

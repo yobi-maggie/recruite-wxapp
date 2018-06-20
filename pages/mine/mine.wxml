@@ -18,8 +18,20 @@
       <text class="deliver">投递</text>
       <text wx:if='{{deliverCnt > 0}}' class="num">2</text>
     </view>
+    <view wx-if="{{userData.userType == 'candidate'}}" class="button" bindtap="viewInviteInterview">
+      <text class="deliver">面试</text>
+      <text wx:if='{{deliverCnt > 0}}' class="num">2</text>
+    </view>
+    <!-- <view wx-if="{{userData.userType == 'candidate'}}" class="button" bindtap="viewInviteInterview">
+      <text class="deliver">回复</text>
+      <text wx:if='{{deliverCnt > 0}}' class="num">2</text>
+    </view> -->
     <view  wx-if="{{userData.userType == 'interviewer'}}" class="button" bindtap="viewInterview">
         <text class="interview">发布</text>
+        <text wx:if='{{interviewCnt > 0}}' class="num">2</text>
+    </view> 
+    <view  wx-if="{{userData.userType == 'interviewer'}}" class="button" bindtap="viewInterview">
+        <text class="interview">收到的简历</text>
         <text wx:if='{{interviewCnt > 0}}' class="num">2</text>
     </view> 
     <view  wx-if="{{userData.userType == 'administor'}}" class="button" bindtap='viewUserList'>
@@ -30,7 +42,11 @@
       <text class="invitation">职位管理</text>
       <text wx:if='{{invitationCnt > 0}}' class="num">2</text>
     </view> 
-    <view  wx-if="{{userData.userType != 'administor'}}" class="button" bindtap="viewCollect">
+    <view  wx-if="{{userData.userType == 'administor'}}" class="button wholeline" bindtap='viewCanvasUser'>
+      <text class="invitation">用户分布</text>
+      <text wx:if='{{invitationCnt > 0}}' class="num">2</text>
+    </view> 
+    <view  wx-if="{{userData.userType == 'candicate'}}" class="button wholeline" bindtap="viewCollect">
       <text class="collect">收藏</text>
       <text wx:if='{{collectCnt > 0}}' class="num">2</text>
     </view>
