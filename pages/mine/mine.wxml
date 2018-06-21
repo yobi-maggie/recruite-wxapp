@@ -30,7 +30,7 @@
         <text class="interview">发布</text>
         <text wx:if='{{interviewCnt > 0}}' class="num">2</text>
     </view> 
-    <view  wx-if="{{userData.userType == 'interviewer'}}" class="button" bindtap="viewInterview">
+    <view  wx-if="{{userData.userType == 'interviewer'}}" class="button" bindtap="receivedResumes">
         <text class="interview">收到的简历</text>
         <text wx:if='{{interviewCnt > 0}}' class="num">2</text>
     </view> 

@@ -117,8 +117,8 @@
   </view>
   <!-- 面试评价-end -->
   <view class="fix-btn" wx-if="{{userData.userType == 'candidate'}}" >
-    <view wx-if="{{!isDeliver}}" class="deliver-resume" bindtap="deliverResume">投递简历</view>
-    <view wx-else-if="{{isDeliver}}" class="deliver-resume is-deliver">已投递</view>
+    <view wx:if="{{!isDeliver}}" class="deliver-resume" bindtap="deliverResume">投递简历</view>
+    <view wx:else class="deliver-resume is-deliver">已投递</view>
   </view>
 
 </view>

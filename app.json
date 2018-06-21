@@ -9,6 +9,7 @@
     "pages/deliverDetail/deliverDetail",
     "pages/positionDetail/positionDetail",
     "pages/companyDetail/companyDetail",
+    "pages/receivedResumes/receivedResumes",
     "pages/interview/interview",
     "pages/login/login",
     "pages/register/register",

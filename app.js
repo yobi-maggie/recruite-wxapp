@@ -37,7 +37,7 @@ App({
     })
   },
   globalData: {
-    userId: 'interviewer',
+    userId: '',
     userData: {
       userType: 'administor',
       userName: 'administor'
@@ -65,7 +65,8 @@ App({
       userType: '../usertype/index',
       userlist: '../userList/userList',
       positionManage: '../positionManage/positionManage',
-      adminUserCanvas: "../adminPageCanvas/adminPageCanvas"
+      adminUserCanvas: "../adminPageCanvas/adminPageCanvas",
+      receivedResumes: "../receivedResumes/receivedResumes"
     }
 
     let options = {}
@@ -91,7 +92,6 @@ App({
       }
       options.url += '?' + arr.join('&')
     }
-    console.log(options)
     wx.navigateTo(options)
   },
   picHost: 'https://static.lagou.com/',

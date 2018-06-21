@@ -1,11 +1,16 @@
 // pages/deliver/deliver.js
+var http = require('../../utils/http.js')
+var time = require('../../utils/util.js');
+
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    positionDeliver: [],
   },
 
   /**
@@ -19,7 +24,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    http('users/get', {
+      userName: app.globalData.userData.userName,
+    }).then((res) => {
+      console.log(res);
+      let positionList = res.data.deliver;
+      positionList.forEach((item) => {
+        console.log(item.time, Number(item.time))
+        item.date = time.formatTime(Number(item.time), 'Y/M/D');
+      })
+      console.log(positionList)
+      if (res.status == 200) {
+        this.setData({
+          positionDeliver:positionList
+        })
+      }
+    })
   },
 
   /**
